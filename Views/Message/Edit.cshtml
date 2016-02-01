@@ -11,14 +11,21 @@
         </h2>
         <fieldset>
             <div class="dnnFormItem">
-                <div><label for="MessageTitle">@Dnn.LocalizeString("lblName")</label></div>
+                <div><label for="MessageTitle">@Dnn.LocalizeString("lblTitle")</label></div>
                 @Html.TextBoxFor(m => m.MessageTitle)
             </div>
             <div class="dnnFormItem">
                 <div><label for="MessageDescription">@Dnn.LocalizeString("lblDescription")</label></div>
                 @Html.TextArea("MessageDescription", Model.MessageDescription)
             </div>
-
+            <div class="dnnFormItem">
+                <div><label for="MessageUrl">@Dnn.LocalizeString("lblUrl")</label></div>
+                @Html.TextBoxFor(m => m.MessageUrl)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="MessageVideoUrl">@Dnn.LocalizeString("lblVideoUrl")</label></div>
+                @Html.TextBoxFor(m => m.MessageVideoUrl)
+            </div>
             @Html.HiddenFor(m => m.ModuleId)
         </fieldset>
     </div>

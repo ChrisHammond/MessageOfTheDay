@@ -155,7 +155,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\Messsage.resx">
+    <Content Include="App_LocalResources\Message.resx">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

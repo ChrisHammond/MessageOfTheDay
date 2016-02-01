@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddMessage.Text" xml:space="preserve">
-    <value>Add New Message Of The Day</value>
+    <value>Add a new Message</value>
   </data>
   <data name="BasicSettings.Text" xml:space="preserve">
-    <value>Message Of The Day Basic Settings</value>
+    <value>Basic Settings</value>
   </data>
   <data name="Cancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -138,16 +138,25 @@
   <data name="ExpandAll.Text" xml:space="preserve">
     <value>Expand All</value>
   </data>
-  <data name="lblAssignedUser.Text" xml:space="preserve">
-    <value>Assigned User</value>
+  <data name="lblDisplayDate.Text" xml:space="preserve">
+    <value>Display Date</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="lblName.Text" xml:space="preserve">
-    <value>Name</value>
+  <data name="lblTitle.Text" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="Submit.Text" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="lblDisplayDate.Help" xml:space="preserve">
+    <value>If you want to have a specific message displayed on a particular day, enter that date here. If no date is provided the message will be included in the Random pool of messages.</value>
+  </data>
+  <data name="lblUrl.Text" xml:space="preserve">
+    <value>Link to URL</value>
+  </data>
+  <data name="lblVideoUrl.Text" xml:space="preserve">
+    <value>URL of Video</value>
   </data>
 </root>
