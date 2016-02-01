@@ -23,8 +23,8 @@ CREATE TABLE {databaseOwner}{objectQualifier}MOTD_Messages
     CreatedOnDate datetime NOT NULL,
     CreatedByUserId int NOT NULL,
     LastModifiedOnDate datetime NOT NULL,
-    LastModifiedByUserId int NOT NULL
-	MessageDisplayDate datetime NULL,
+    LastModifiedByUserId int NOT NULL,
+	MessageDisplayDate datetime NULL
     )  ON [PRIMARY]
      TEXTIMAGE_ON [PRIMARY]
 GO
