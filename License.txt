@@ -1,4 +1,4 @@
-﻿<div class="License">
+?<div class="License">
 	<h3>License</h3>
 	<p class="Owner">
 		Christoc.com  <a href=http://www.christoc.com>http://www.christoc.com</a></br>
