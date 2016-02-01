@@ -1,0 +1,28 @@
+﻿<h3>MessageOfTheDay</h3>
+<p class="Contributor">
+	Christoc.com <br />
+	<a href="mailto:modules@christoc.com">modules@christoc.com</a><br />
+	<a href=http://www.christoc.com>http://www.christoc.com</a><br />
+</p>
+<hr/>
+<div class="License">
+	<h3>About the Message Of The Day Module</h3>
+	<p class="Owner">
+		<b>Version V00.00.01</b><br /><br />
+	</p>
+	<p>Initial Release of the Message of the Day Module.</p>
+	
+	<h4>Features</h4>
+	<ul>
+			<li>Ability to Create Message of the Day</li>
+			<li>Ability to Schedule MOTD</li>
+			<li>If Nothing scheduled, display random MOTD</li>
+			<li>Don't show message randomly more than X times a month, unless no other options available</li>
+	</ul>
+	
+
+	<h4>Bug Fixes</h4>
+	<ul>
+			<li>None, first release</li>
+	</ul>	
+</div>
