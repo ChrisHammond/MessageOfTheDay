@@ -159,4 +159,22 @@
   <data name="lblVideoUrl.Text" xml:space="preserve">
     <value>URL of Video</value>
   </data>
+  <data name="notRequired.Text" xml:space="preserve">
+    <value>(not required)</value>
+  </data>
+  <data name="required.Text" xml:space="preserve">
+    <value>required</value>
+  </data>
+  <data name="lblDescription.Help" xml:space="preserve">
+    <value>Enter the Message to display today. This can be plain text, or HTML.</value>
+  </data>
+  <data name="lblTitle.Help" xml:space="preserve">
+    <value>Enter a title</value>
+  </data>
+  <data name="lblUrl.Help" xml:space="preserve">
+    <value>Enter a URL to link to</value>
+  </data>
+  <data name="lblVideoUrl.Help" xml:space="preserve">
+    <value>Enter a video url (ex: https://youtu.be/kOoQJDeTlJ0)</value>
+  </data>
 </root>

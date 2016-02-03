@@ -1,5 +1,6 @@
 c:\websites\dnndev.me\bin\MessageOfTheDay.dll.config
 c:\websites\dnndev.me\bin\MessageOfTheDay.dll
 c:\websites\dnndev.me\bin\MessageOfTheDay.pdb
+c:\websites\dnndev.me\desktopmodules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.csprojResolveAssemblyReference.cache
 c:\websites\dnndev.me\desktopmodules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.dll
 c:\websites\dnndev.me\desktopmodules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.pdb

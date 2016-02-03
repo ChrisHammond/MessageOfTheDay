@@ -16,6 +16,8 @@
 */
 
 using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Caching;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
@@ -83,7 +85,10 @@ namespace Christoc.Modules.MessageOfTheDay.Models
         ///<summary>
         /// The date the Message was updated
         ///</summary>
-        public DateTime MessageDisplayDate { get; set; }
+
+        [DisplayName("MessageDisplayDate")]
+        [DataType(DataType.Date)]
+        public DateTime? MessageDisplayDate { get; set; }
 
     }
 }

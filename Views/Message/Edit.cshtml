@@ -2,6 +2,33 @@
 
 @using DotNetNuke.Web.Mvc.Helpers
 
+<!--We really shouldn't do this, but if the skin doesn't have BootStrap loaded we're going to do it anyways. -->
+
+@section Styles
+{
+    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css")" rel="stylesheet" type="text/css" />
+}
+@section JavaScript
+ {
+    <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js")"></script>
+  
+    <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js")"></script>
+}
+
+@{
+    var notRequiredPlaceHolder = string.Empty;
+    var titlePlaceHolder = string.Empty;
+    var descriptionPlaceholder = string.Empty;
+    var urlPlaceholder = string.Empty;
+    var videoUrlPlaceholder = string.Empty;
+    titlePlaceHolder = @Dnn.LocalizeString("lblTitle.Help");
+    descriptionPlaceholder = @Dnn.LocalizeString("lblDescription.Help");
+    urlPlaceholder = @Dnn.LocalizeString("lblUrl.Help");
+    videoUrlPlaceholder = @Dnn.LocalizeString("lblVideoUrl.Help");
+    notRequiredPlaceHolder = @Dnn.LocalizeString("notRequired");
+}
+
 <div id="Message-@Dnn.ModuleContext.ModuleId">
     <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
         <div class="dnnFormExpandContent dnnRight "><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
@@ -10,22 +37,33 @@
             <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
         </h2>
         <fieldset>
-            <div class="dnnFormItem">
-                <div><label for="MessageTitle">@Dnn.LocalizeString("lblTitle")</label></div>
-                @Html.TextBoxFor(m => m.MessageTitle)
+            <div class="form-group">
+                <div><label for="MessageTitle" class="control-label">@Dnn.LocalizeString("lblTitle")</label></div>
+                @Html.TextBoxFor(m => m.MessageTitle, new { @class = "form-control", placeholder = titlePlaceHolder })
             </div>
-            <div class="dnnFormItem">
-                <div><label for="MessageDescription">@Dnn.LocalizeString("lblDescription")</label></div>
-                @Html.TextArea("MessageDescription", Model.MessageDescription)
+            <div class="form-group">
+                <div><label for="MessageDescription" class="control-label">@Dnn.LocalizeString("lblDescription")</label></div>
+                @Html.TextArea("MessageDescription", Model.MessageDescription, new { @class = "form-control", placeholder = descriptionPlaceholder })
             </div>
-            <div class="dnnFormItem">
-                <div><label for="MessageUrl">@Dnn.LocalizeString("lblUrl")</label></div>
-                @Html.TextBoxFor(m => m.MessageUrl)
+            <div class="form-group">
+                <div><label for="MessageUrl" class="control-label">@Dnn.LocalizeString("lblUrl")</label></div>
+                @Html.TextBoxFor(m => m.MessageUrl, new { @class = "form-control", placeholder = urlPlaceholder })
             </div>
-            <div class="dnnFormItem">
-                <div><label for="MessageVideoUrl">@Dnn.LocalizeString("lblVideoUrl")</label></div>
-                @Html.TextBoxFor(m => m.MessageVideoUrl)
+            <div class="form-group">
+                <div><label for="MessageVideoUrl" class="control-label">@Dnn.LocalizeString("lblVideoUrl")</label></div>
+                @Html.TextBoxFor(m => m.MessageVideoUrl, new { @class = "form-control", placeholder = videoUrlPlaceholder })
             </div>
+
+            <div class="form-group">
+                <div><label for="MessageDisplayDate" class="control-label">@Dnn.LocalizeString("lblDisplayDate")</label>
+                </div>
+
+                
+
+                @Html.TextBoxFor(m => m.MessageDisplayDate, new { @class = "datepicker form-control", placeholder = notRequiredPlaceHolder })
+
+            </div>
+
             @Html.HiddenFor(m => m.ModuleId)
         </fieldset>
     </div>
@@ -35,19 +73,26 @@
 
 <script type="text/javascript">
     /*globals jQuery, window, Sys */
-    (function($, Sys) {
+    (function ($, Sys) {
         function dnnEditBasicSettings() {
             $('#dnnEditBasicSettings').dnnPanels();
             $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({ expandText: '@Dnn.LocalizeString("ExpandAll")', collapseText: '@Dnn.LocalizeString("CollapseAll")', targetArea: '#dnnEditBasicSettings' });
         }
 
-        $(function() {
-            $('#cancelEdit').click(function() { dnnModal.closePopUp(false); });
+        $(function () {
+            $('#cancelEdit').click(function () { dnnModal.closePopUp(false); });
             dnnEditBasicSettings();
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
                 dnnEditBasicSettings();
             });
         });
 
     }(jQuery, window.Sys));
+
+
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+
+
 </script>
