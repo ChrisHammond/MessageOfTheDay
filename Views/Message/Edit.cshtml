@@ -17,7 +17,7 @@
 }
 
 @{
-    var notRequiredPlaceHolder = string.Empty;
+    var messageDisplayDatePlaceHolder = string.Empty;
     var titlePlaceHolder = string.Empty;
     var descriptionPlaceholder = string.Empty;
     var urlPlaceholder = string.Empty;
@@ -26,7 +26,7 @@
     descriptionPlaceholder = @Dnn.LocalizeString("lblDescription.Help");
     urlPlaceholder = @Dnn.LocalizeString("lblUrl.Help");
     videoUrlPlaceholder = @Dnn.LocalizeString("lblVideoUrl.Help");
-    notRequiredPlaceHolder = @Dnn.LocalizeString("notRequired");
+    messageDisplayDatePlaceHolder = @Dnn.LocalizeString("lblDisplayDate.Help");
 }
 
 <div id="Message-@Dnn.ModuleContext.ModuleId">
@@ -60,7 +60,7 @@
 
                 
 
-                @Html.TextBoxFor(m => m.MessageDisplayDate, new { @class = "datepicker form-control", placeholder = notRequiredPlaceHolder })
+                @Html.TextBoxFor(m => m.MessageDisplayDate, new { @class = "datepicker form-control", placeholder = messageDisplayDatePlaceHolder })
 
             </div>
 
