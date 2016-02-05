@@ -7,8 +7,6 @@
         }
         else
         {
-
-
             <div class="container">
                 @foreach (var message in Model)
                 {
@@ -31,10 +29,21 @@
                                 <div class="card-action">
                                     <a href="@message.MessageVideoUrl" target="_blank">@Dnn.LocalizeString("VideoUrl")</a>
                                     <a href="@message.MessageUrl" target="new_blank">@Dnn.LocalizeString("ReadMore")</a>
+
+                                    @if (Dnn.ModuleContext.IsEditable)
+                                    {
+                                        <a href="@Url.Action("Edit", "Message", new {ctl = "Edit", MessageId = message.MessageId})">@Dnn.LocalizeString("EditMessage")</a>
+                                        <a href="@Url.Action("Delete", "Message", new {MessageId = message.MessageId})">@Dnn.LocalizeString("DeleteMessage")</a>
+
+                                    }
+
+
                                 </div><!-- card actions -->
                                 <div class="card-reveal">
                                     <span class="card-title">@message.MessageTitle</span> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    @message.MessageDescription
+                                    <span class="card-details">
+                                        @Html.Raw(message.MessageDescription)
+                                    </span>
                                 </div><!-- card reveal -->
                             </div>
                         </div>
@@ -46,16 +55,16 @@
         }
 
     </div>
-<script>
-    $(function () {
+    <script>
+        $(function () {
 
-        $('#show').on('click', function () {
-            $('.card-reveal').slideToggle('slow');
+            $('#show').on('click', function () {
+                $('.card-reveal').slideToggle('slow');
+            });
+
+            $('.card-reveal .close').on('click', function () {
+                $('.card-reveal').slideToggle('slow');
+            });
         });
 
-        $('.card-reveal .close').on('click', function () {
-            $('.card-reveal').slideToggle('slow');
-        });
-    });
-
-</script>
+    </script>

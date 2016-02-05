@@ -82,6 +82,11 @@
     margin:20px ;
 }
 
+.card .card-details {
+    clear: both;
+    display: block;
+}
+
 .btn-custom{
     background-color: transparent;
     font-size:18px;

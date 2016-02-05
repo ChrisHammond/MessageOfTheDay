@@ -2,18 +2,23 @@
 
 @using DotNetNuke.Web.Mvc.Helpers
 
-<!--We really shouldn't do this, but if the skin doesn't have BootStrap loaded we're going to do it anyways. -->
+<!--We really shouldn't do this (force load bootstrap), but if the skin doesn't have BootStrap loaded we're going to do it anyways. Most POPUP skins won't do this already. -->
 
 @section Styles
 {
     <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/summernote/0.7.3/summernote.css")" rel="stylesheet" type="text/css" />
+    
 }
 @section JavaScript
  {
     <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js")"></script>
 
     <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js")"></script>
+
+    <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/summernote/0.7.3/summernote.js")"></script>
+    
 }
 
 @{
@@ -99,6 +104,9 @@
 
     $(function () {
         $(".datepicker").datepicker();
+
+        $('#MessageDescription').summernote();
+
     });
 
 
