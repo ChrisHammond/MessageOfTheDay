@@ -17,6 +17,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}MOTD_Messages
     MessageId int NOT NULL IDENTITY (1, 1),
     MessageTitle nvarchar(MAX) NOT NULL,
     MessageDescription nvarchar(MAX) NOT NULL,
+	MessageImageUrl nvarchar(255) NOT NULL,
 	MessageUrl nvarchar(255) NOT NULL,
 	MessageVideoUrl nvarchar(255) NOT NULL,
     ModuleId int NOT NULL,

@@ -165,6 +165,12 @@
   <data name="lblDescription.Help" xml:space="preserve">
     <value>Enter the Message to display today. This can be plain text, or HTML</value>
   </data>
+  <data name="lblImageUrl.Help" xml:space="preserve">
+    <value>Enter the URL of an image to display with the message</value>
+  </data>
+  <data name="lblImageUrl.Text" xml:space="preserve">
+    <value>Image URL</value>
+  </data>
   <data name="lblTitle.Help" xml:space="preserve">
     <value>Enter a title for the Message</value>
   </data>
@@ -173,5 +179,14 @@
   </data>
   <data name="lblVideoUrl.Help" xml:space="preserve">
     <value>Enter a video url (ex: https://youtu.be/kOoQJDeTlJ0) to include a link to a video</value>
+  </data>
+  <data name="NoMessages.Text" xml:space="preserve">
+    <value>No messages defined, please add a message.</value>
+  </data>
+  <data name="ReadMore.Text" xml:space="preserve">
+    <value>Read More</value>
+  </data>
+  <data name="VideoUrl.Text" xml:space="preserve">
+    <value>Video</value>
   </data>
 </root>

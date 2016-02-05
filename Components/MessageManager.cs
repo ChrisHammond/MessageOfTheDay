@@ -15,7 +15,10 @@
 ' 
 */
 
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using DotNetNuke.Data;
 using DotNetNuke.Framework;
 using Christoc.Modules.MessageOfTheDay.Models;
@@ -29,6 +32,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
         void DeleteMessage(Message t);
         IEnumerable<Message> GetMessages(int moduleId);
         Message GetMessage(int MessageId, int moduleId);
+        IEnumerable<Message> GetDailyMessage(int moduleId);
         void UpdateMessage(Message t);
     }
 
@@ -80,6 +84,40 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             return t;
         }
 
+
+        public IEnumerable<Message> GetDailyMessage(int moduleId)
+        {
+
+            //TODO: get message schedule for Today, if not possible, get a random message
+
+            //Message t;
+            //using (IDataContext ctx = DataContext.Instance())
+            //{
+            //    var rep = ctx.GetRepository<Message>();
+            //    t = rep.Get(moduleId);
+            //}
+            //return t;
+
+            return GetRandomMessage(moduleId);
+
+        }
+
+        public IEnumerable<Message> GetRandomMessage(int moduleId)
+        {
+            IEnumerable <Message> t;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<Message>();
+                t = ctx.ExecuteQuery<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages order by NEWID()");
+                
+            }
+            return t;
+        }
+
+        //TODO: We need to store which message is being displayed on a particular day, once selected, that message should continue to display until the next day
+
+
+
         public void UpdateMessage(Message t)
         {
             using (IDataContext ctx = DataContext.Instance())
@@ -89,9 +127,11 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             }
         }
 
+
         protected override System.Func<IMessageManager> GetFactory()
         {
             return () => new MessageManager();
         }
+        
     }
 }

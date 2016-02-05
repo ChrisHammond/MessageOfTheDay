@@ -49,6 +49,11 @@ namespace Christoc.Modules.MessageOfTheDay.Models
         ///<summary>
         /// A string with the description of the message
         ///</summary>
+        public string MessageImageUrl { get; set; }
+
+        ///<summary>
+        /// A string with the description of the message
+        ///</summary>
         public string MessageUrl { get; set; }
 
         ///<summary>

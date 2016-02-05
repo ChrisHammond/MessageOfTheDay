@@ -41,12 +41,7 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
         {
             DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(CommonJs.DnnPlugins);
 
-            var userlist = UserController.GetUsers(PortalSettings.PortalId);
-            var users = from user in userlist.Cast<UserInfo>().ToList()
-                        select new SelectListItem { Text = user.DisplayName, Value = user.UserID.ToString() };
-
-            ViewBag.Users = users;
-
+            
             var item = (MessageId == -1)
                  ? new Message { ModuleId = ModuleContext.ModuleId }
                  : MessageManager.Instance.GetMessage(MessageId, ModuleContext.ModuleId);
@@ -56,26 +51,28 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
 
         [HttpPost]
         [DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
-        public ActionResult Edit(Message item)
+        public ActionResult Edit(Message m)
         {
-            if (item.MessageId == -1)
+            if (m.MessageId == -1)
             {
-                item.CreatedByUserId = User.UserID;
-                item.CreatedOnDate = DateTime.UtcNow;
-                item.LastModifiedByUserId = User.UserID;
-                item.LastModifiedOnDate = DateTime.UtcNow;
-
-                MessageManager.Instance.CreateMessage(item);
+                m.CreatedByUserId = User.UserID;
+                m.CreatedOnDate = DateTime.UtcNow;
+                m.LastModifiedByUserId = User.UserID;
+                m.LastModifiedOnDate = DateTime.UtcNow;
+                
+                MessageManager.Instance.CreateMessage(m);
             }
             else
             {
-                var existingItem = MessageManager.Instance.GetMessage(item.MessageId, item.ModuleId);
+                var existingItem = MessageManager.Instance.GetMessage(m.MessageId, m.ModuleId);
                 existingItem.LastModifiedByUserId = User.UserID;
                 existingItem.LastModifiedOnDate = DateTime.UtcNow;
-                existingItem.MessageTitle = item.MessageTitle;
-                existingItem.MessageDescription = item.MessageDescription;
-                
-
+                existingItem.MessageTitle = m.MessageTitle;
+                existingItem.MessageDescription = m.MessageDescription;
+                existingItem.MessageUrl = m.MessageUrl;
+                existingItem.MessageImageUrl = m.MessageImageUrl;
+                existingItem.MessageVideoUrl = m.MessageVideoUrl;
+                existingItem.MessageDisplayDate = m.MessageDisplayDate;
                 MessageManager.Instance.UpdateMessage(existingItem);
             }
 
@@ -85,7 +82,9 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
         [ModuleAction(ControlKey = "Edit", TitleKey = "AddMessage")]
         public ActionResult Index()
         {
-            var messages = MessageManager.Instance.GetMessages(ModuleContext.ModuleId);
+            //var messages = MessageManager.Instance.GetMessages(ModuleContext.ModuleId);
+
+            var messages = MessageManager.Instance.GetDailyMessage(ModuleContext.ModuleId);
             return View(messages);
         }
     }

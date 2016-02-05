@@ -12,7 +12,7 @@
 @section JavaScript
  {
     <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js")"></script>
-  
+
     <script type="text/javascript" src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js")"></script>
 }
 
@@ -22,11 +22,13 @@
     var descriptionPlaceholder = string.Empty;
     var urlPlaceholder = string.Empty;
     var videoUrlPlaceholder = string.Empty;
+    var imageUrlPlaceholder = string.Empty;
     titlePlaceHolder = @Dnn.LocalizeString("lblTitle.Help");
     descriptionPlaceholder = @Dnn.LocalizeString("lblDescription.Help");
     urlPlaceholder = @Dnn.LocalizeString("lblUrl.Help");
     videoUrlPlaceholder = @Dnn.LocalizeString("lblVideoUrl.Help");
     messageDisplayDatePlaceHolder = @Dnn.LocalizeString("lblDisplayDate.Help");
+    imageUrlPlaceholder = @Dnn.LocalizeString("lblImageUrl.Help");
 }
 
 <div id="Message-@Dnn.ModuleContext.ModuleId">
@@ -42,8 +44,14 @@
                 @Html.TextBoxFor(m => m.MessageTitle, new { @class = "form-control", placeholder = titlePlaceHolder })
             </div>
             <div class="form-group">
-                <div><label for="MessageDescription" class="control-label">@Dnn.LocalizeString("lblDescription")</label></div>
+                <div>
+                    <label for="MessageDescription" class="control-label">@Dnn.LocalizeString("lblDescription")</label>
+                </div>
                 @Html.TextArea("MessageDescription", Model.MessageDescription, new { @class = "form-control", placeholder = descriptionPlaceholder })
+            </div>
+            <div class="form-group">
+                <div><label for="MessageImageUrl" class="control-label">@Dnn.LocalizeString("lblImageUrl")</label></div>
+                @Html.TextBoxFor(m => m.MessageImageUrl, new { @class = "form-control", placeholder = imageUrlPlaceholder })
             </div>
             <div class="form-group">
                 <div><label for="MessageUrl" class="control-label">@Dnn.LocalizeString("lblUrl")</label></div>
@@ -55,10 +63,9 @@
             </div>
 
             <div class="form-group">
-                <div><label for="MessageDisplayDate" class="control-label">@Dnn.LocalizeString("lblDisplayDate")</label>
+                <div>
+                    <label for="MessageDisplayDate" class="control-label">@Dnn.LocalizeString("lblDisplayDate")</label>
                 </div>
-
-                
 
                 @Html.TextBoxFor(m => m.MessageDisplayDate, new { @class = "datepicker form-control", placeholder = messageDisplayDatePlaceHolder })
 
