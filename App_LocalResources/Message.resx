@@ -184,9 +184,12 @@
     <value>No messages defined, please add a message.</value>
   </data>
   <data name="ReadMore.Text" xml:space="preserve">
-    <value>Read More</value>
+    <value>Link</value>
   </data>
   <data name="VideoUrl.Text" xml:space="preserve">
     <value>Video</value>
+  </data>
+  <data name="Details.Text" xml:space="preserve">
+    <value>Details</value>
   </data>
 </root>

@@ -11,7 +11,7 @@
                 @foreach (var message in Model)
                 {
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-image">
                                     <img class="img-responsive" src="@message.MessageImageUrl">
@@ -27,6 +27,7 @@
                                     </button>
                                 </div><!-- card content -->
                                 <div class="card-action">
+                                    <a href="#" id="LinkShow">@Dnn.LocalizeString("Details")</a>    
                                     <a href="@message.MessageVideoUrl" target="_blank">@Dnn.LocalizeString("VideoUrl")</a>
                                     <a href="@message.MessageUrl" target="new_blank">@Dnn.LocalizeString("ReadMore")</a>
 
@@ -50,8 +51,6 @@
                     </div>
                 }
             </div>
-
-
         }
 
     </div>
@@ -62,6 +61,9 @@
                 $('.card-reveal').slideToggle('slow');
             });
 
+            $('#LinkShow').on('click', function () {
+                $('.card-reveal').slideToggle('slow');
+            });
             $('.card-reveal .close').on('click', function () {
                 $('.card-reveal').slideToggle('slow');
             });
