@@ -98,8 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\LogManager.cs" />
     <Compile Include="Components\MessageManager.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Models\Settings.cs" />

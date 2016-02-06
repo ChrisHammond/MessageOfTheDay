@@ -22,6 +22,8 @@ using System.Linq;
 using DotNetNuke.Data;
 using DotNetNuke.Framework;
 using Christoc.Modules.MessageOfTheDay.Models;
+using DotNetNuke.Entities.Users;
+using DotNetNuke.UI.UserControls;
 
 namespace Christoc.Modules.MessageOfTheDay.Components
 {
@@ -32,7 +34,8 @@ namespace Christoc.Modules.MessageOfTheDay.Components
         void DeleteMessage(Message t);
         IEnumerable<Message> GetMessages(int moduleId);
         Message GetMessage(int MessageId, int moduleId);
-        IEnumerable<Message> GetDailyMessage(int moduleId);
+        Message GetMessageByDate(DateTime d, int moduleId);
+        Message GetDailyMessage(int moduleId);
         void UpdateMessage(Message t);
     }
 
@@ -85,7 +88,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
         }
 
 
-        public IEnumerable<Message> GetDailyMessage(int moduleId)
+        public Message GetDailyMessage(int moduleId)
         {
 
             //TODO: get message schedule for Today, if not possible, get a random message
@@ -98,26 +101,79 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             //}
             //return t;
 
-            return GetRandomMessage(moduleId);
+            //Get today's Log, if it is Null, then we don't have a day defined already
+
+            var l = LogManager.Instance.GetDailyLog(DateTime.Now, moduleId);
+            if (l != null)
+            {
+                return GetMessage(l.MessageId, moduleId);
+            }
+            else
+            {//If Log is Null, get the first Message that has Today's date.
+
+                var m = GetMessageByDate(DateTime.Now, moduleId);
+
+                if (m!=null)
+                {
+                    //Save the log
+
+                    var newLog = new Log();
+                    newLog.MessageId = m.MessageId;
+                    newLog.CreatedOnDate = DateTime.UtcNow;
+                    newLog.LastModifiedOnDate = DateTime.UtcNow;
+                    newLog.LogDate = DateTime.Now.Date; //TODO: need to make this use the Portal time zone instead of Server time
+                    newLog.ModuleId = m.ModuleId;
+                    LogManager.Instance.CreateLog(newLog);
+                    return m;
+                }
+            }
+            
+            //If nothing yet, get random
+            var ranMes = GetRandomMessage(moduleId);
+            if (ranMes != null)
+            {
+                //Save the log
+
+                var newLog = new Log();
+                newLog.MessageId = ranMes.MessageId;
+                newLog.CreatedOnDate = DateTime.UtcNow;
+                newLog.LastModifiedOnDate = DateTime.UtcNow;
+                newLog.LogDate = DateTime.Now.Date; //TODO: need to make this use the Portal time zone instead of Server time
+                newLog.ModuleId = ranMes.ModuleId;
+                LogManager.Instance.CreateLog(newLog);
+                return ranMes;
+            }
+
+            return null;
 
         }
 
-        public IEnumerable<Message> GetRandomMessage(int moduleId)
+
+        public Message GetMessageByDate(DateTime d, int moduleId)
         {
-            IEnumerable <Message> t;
+            Message t;
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Message>();
-                t = ctx.ExecuteQuery<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages order by NEWID()");
+                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages WHERE MessageDisplayDate = '"  + d.ToShortDateString() + "'");
+
+            }
+            return t;
+        }
+
+        public Message GetRandomMessage(int moduleId)
+        {
+            Message t;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages order by NEWID()");
                 
             }
             return t;
         }
 
         //TODO: We need to store which message is being displayed on a particular day, once selected, that message should continue to display until the next day
-
-
-
+        
         public void UpdateMessage(Message t)
         {
             using (IDataContext ctx = DataContext.Instance())

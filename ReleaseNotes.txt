@@ -27,11 +27,11 @@
 			<li>If Nothing scheduled, display random message on page/module load</li>
 			<li>Uses bootstrap</li>
 			<li>WYSWIG editor<li>
+			<li>Ability to Schedule MOTD</li>
 	</ul>
 
 	<h4>Future Features</h4>
 	<ul>
-			<li>Ability to Schedule MOTD</li>
 			<li>Don't show message randomly more than X times a month, unless no other options available</li>
 	</ul>
 

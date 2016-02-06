@@ -84,8 +84,8 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
         {
             //var messages = MessageManager.Instance.GetMessages(ModuleContext.ModuleId);
 
-            var messages = MessageManager.Instance.GetDailyMessage(ModuleContext.ModuleId);
-            return View(messages);
+            var message = MessageManager.Instance.GetDailyMessage(ModuleContext.ModuleId);
+            return View(message);
         }
     }
 }
