@@ -6,3 +6,7 @@ A simple MVC module for the DNN (DotNetNuke) content management system that util
 2. Place Module on page
 3. Switch to Edit mode
 4. Edit Content via the "Add a New Message" module action
+
+
+##See More
+http://chrishammond.github.io/MessageOfTheDay/
