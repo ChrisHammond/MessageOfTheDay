@@ -27,6 +27,7 @@
       <InstallInclude Include="**\*.txt"  Exclude="**\obj\**;**\_ReSharper*\**;packages\**;**\.git\**;" />
       <InstallInclude Include="**\images\**" Exclude="packages\**" />
       
+      
     </ItemGroup>
 
     <ItemGroup>
@@ -49,6 +50,7 @@
       <SourceInclude Include="**\*.csproj" />
       <SourceInclude Include="**\*.targets" />
       <SourceInclude Include="**\*.sln" />
+      
     </ItemGroup>
     
     <CreateItem Include="$(DNNFileName).dnn">
