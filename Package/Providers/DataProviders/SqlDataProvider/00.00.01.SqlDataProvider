@@ -1,0 +1,74 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}MOTD_Messages]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}MOTD_Messages]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}MOTD_Messages
+    (
+    MessageId int NOT NULL IDENTITY (1, 1),
+    MessageTitle nvarchar(MAX) NOT NULL,
+    MessageDescription nvarchar(MAX) NOT NULL,
+	MessageImageUrl nvarchar(255) NOT NULL,
+	MessageUrl nvarchar(255) NOT NULL,
+	MessageVideoUrl nvarchar(255) NOT NULL,
+    ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL,
+	MessageDisplayDate datetime NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+ALTER TABLE {databaseOwner}{objectQualifier}MOTD_Messages ADD CONSTRAINT
+    PK_{objectQualifier}MOTD_Messages PRIMARY KEY CLUSTERED 
+    (
+    MessageId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}MOTD_Logs]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}MOTD_Logs]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}MOTD_Logs
+    (
+	LogId int NOT NULL IDENTITY (1, 1),
+	LogDate datetime NOT NULL,
+	MessageId int NOT NULL,
+	ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+/*    CreatedByUserId int NOT NULL, */
+    LastModifiedOnDate datetime NOT NULL--,
+/*  LastModifiedByUserId int NOT NULL */
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+ALTER TABLE {databaseOwner}{objectQualifier}MOTD_Logs ADD CONSTRAINT
+    PK_{objectQualifier}MOTD_Logs PRIMARY KEY CLUSTERED 
+    (
+    LogId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
