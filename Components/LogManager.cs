@@ -92,7 +92,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             Log t;
             using (IDataContext ctx = DataContext.Instance())
             {
-                t = ctx.ExecuteSingleOrDefault<Log>(CommandType.Text, "SELECT top 1 * FROM MOTD_Logs Where LogDate = '" + theDate.ToShortDateString() + "'");
+                t = ctx.ExecuteSingleOrDefault<Log>(CommandType.Text, "SELECT top 1 * FROM MOTD_Logs Where moduleid=" + moduleId + " and LogDate = '" + theDate.ToShortDateString() + "'");
             }
             return t;
         }

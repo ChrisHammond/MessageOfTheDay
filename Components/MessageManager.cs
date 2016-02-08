@@ -144,7 +144,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
                 return ranMes;
             }
 
-            return null;
+            return new Message();
 
         }
 
@@ -155,7 +155,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Message>();
-                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages WHERE MessageDisplayDate = '"  + d.ToShortDateString() + "'");
+                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages WHERE moduleid=" + moduleId + " and MessageDisplayDate = '" + d.ToShortDateString() + "'");
 
             }
             return t;
@@ -166,7 +166,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             Message t;
             using (IDataContext ctx = DataContext.Instance())
             {
-                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages order by NEWID()");
+                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages where moduleid=" + moduleId +" order by NEWID()  ");
                 
             }
             return t;

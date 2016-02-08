@@ -1,64 +1,73 @@
 ﻿@model Christoc.Modules.MessageOfTheDay.Models.Message
 
-    <div id="Messages-@Dnn.ModuleContext.ModuleId">
-      
-            <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img class="img-responsive" src="@Model.MessageImageUrl">
+@if (Model.MessageId < 1)
+{
+    @Dnn.LocalizeString("NoMessages.Text")
+}
 
-                                </div><!-- card image -->
+else {
 
-                                <div class="card-content">
-                                    <span class="card-title">
-                                        @Model.MessageTitle
-                                    </span>
-                                    <button type="button" id="show" class="btn btn-custom pull-right" aria-label="Left Align">
-                                        <i class="fa fa-ellipsis-v"></i>
-                                    </button>
-                                </div><!-- card content -->
-                                <div class="card-action">
-                                    <a href="#" id="LinkShow">@Dnn.LocalizeString("Details")</a>    
-                                    <a href="@Model.MessageVideoUrl" target="_blank">@Dnn.LocalizeString("VideoUrl")</a>
-                                    <a href="@Model.MessageUrl" target="new_blank">@Dnn.LocalizeString("ReadMore")</a>
+<div id="Messages-@Dnn.ModuleContext.ModuleId">
 
-                                    @if (Dnn.ModuleContext.IsEditable)
-                                    {
-                                        <a href="@Url.Action("Edit", "Message", new {ctl = "Edit", MessageId = Model.MessageId})">@Dnn.LocalizeString("EditMessage")</a>
-                                        <a href="@Url.Action("Delete", "Message", new {MessageId = Model.MessageId})">@Dnn.LocalizeString("DeleteMessage")</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="img-responsive" src="@Model.MessageImageUrl">
 
-                                    }
+                    </div><!-- card image -->
+
+                    <div class="card-content">
+                        <span class="card-title">
+                            @Model.MessageTitle
+                        </span>
+                        <button type="button" id="show" class="btn btn-custom pull-right" aria-label="Left Align">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                    </div><!-- card content -->
+                    <div class="card-action">
+                        <a href="#" id="LinkShow">@Dnn.LocalizeString("Details")</a>
+                        <a href="@Model.MessageVideoUrl" target="_blank">@Dnn.LocalizeString("VideoUrl")</a>
+                        <a href="@Model.MessageUrl" target="new_blank">@Dnn.LocalizeString("ReadMore")</a>
+
+                        @if (Dnn.ModuleContext.IsEditable)
+                        {
+                            <a href="@Url.Action("Edit", "Message", new {ctl = "Edit", MessageId = Model.MessageId})">@Dnn.LocalizeString("EditMessage")</a>
+                            <a href="@Url.Action("Delete", "Message", new {MessageId = Model.MessageId})">@Dnn.LocalizeString("DeleteMessage")</a>
+
+                        }
 
 
-                                </div><!-- card actions -->
-                                <div class="card-reveal">
-                                    <span class="card-title">@Model.MessageTitle</span> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    <span class="card-details">
-                                        @Html.Raw(Model.MessageDescription)
-                                    </span>
-                                </div><!-- card reveal -->
-                            </div>
-                        </div>
-                    </div>
-                
+                    </div><!-- card actions -->
+                    <div class="card-reveal">
+                        <span class="card-title">@Model.MessageTitle</span> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <span class="card-details">
+                            @Html.Raw(Model.MessageDescription)
+                        </span>
+                    </div><!-- card reveal -->
+                </div>
             </div>
-        
+        </div>
+
     </div>
-    <script>
-        $(function () {
 
-            $('#show').on('click', function () {
-                $('.card-reveal').slideToggle('slow');
-            });
+</div>
+<script>
+    $(function () {
 
-            $('#LinkShow').on('click', function () {
-                $('.card-reveal').slideToggle('slow');
-            });
-            $('.card-reveal .close').on('click', function () {
-                $('.card-reveal').slideToggle('slow');
-            });
+        $('#show').on('click', function () {
+            $('.card-reveal').slideToggle('slow');
         });
 
-    </script>
+        $('#LinkShow').on('click', function () {
+            $('.card-reveal').slideToggle('slow');
+        });
+        $('.card-reveal .close').on('click', function () {
+            $('.card-reveal').slideToggle('slow');
+        });
+    });
+
+</script>
+
+}
