@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="MessageOfTheDay" type="Module" version="00.00.01">
+    <package name="MessageOfTheDay" type="Module" version="00.00.02">
       <friendlyName>MessageOfTheDay</friendlyName>
       <description>Message Of The Day Module to display a random, or predefined, message.</description>
       <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
@@ -82,6 +82,18 @@
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
+                  <moduleControl>
+                    <controlKey>AdminList</controlKey>
+                    <controlSrc>Christoc.Modules.MessageOfTheDay.Controllers/Message/AdminList.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Message List</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+
                 </moduleControls>
               </moduleDefinition>
             </moduleDefinitions>

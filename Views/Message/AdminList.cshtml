@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Christoc.Modules.MessageOfTheDay.Models.Message>
+    
+
+    <div id="Messages-@Dnn.ModuleContext.ModuleId">
+
+
+        @if (Model.Count() == 0)
+        {
+            <p>No messages defined.</p>
+        }
+        else
+        {
+
+            <div class="container">
+                <table id="messageTable">
+                    <tr>
+                        <th>@Dnn.LocalizeString("lblTitle")</th>
+                        <th>@Dnn.LocalizeString("lblDescription")</th>
+                        <th>@Dnn.LocalizeString("lblImageUrl")</th>
+                        <th>@Dnn.LocalizeString("lblUrl")</th>
+                        <th>@Dnn.LocalizeString("lblVideoUrl")</th>
+                        
+                        <th>@Dnn.LocalizeString("lblDisplayDate")</th>
+
+                    </tr>
+
+                    @foreach (var message in Model)
+                    {
+                        <tr>
+                            <td>
+                                @message.MessageTitle
+                            </td>
+                            <td>
+                                @Html.Raw(message.MessageDescription)
+                            </td>
+                            <td>
+                                @message.MessageImageUrl
+                            </td>
+                            <td>
+                                @message.MessageUrl
+                            </td>
+
+                            <td>
+                                @message.MessageVideoUrl
+                            </td>
+                            <td>
+                                @message.MessageDisplayDate
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    </div>

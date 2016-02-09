@@ -20,10 +20,13 @@ using System.Linq;
 using System.Web.Mvc;
 using Christoc.Modules.MessageOfTheDay.Components;
 using Christoc.Modules.MessageOfTheDay.Models;
+using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Web.Mvc.Framework.Controllers;
 using DotNetNuke.Web.Mvc.Framework.ActionFilters;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework.JavaScriptLibraries;
+using DotNetNuke.Security;
+using DotNetNuke.UI.Modules;
 
 namespace Christoc.Modules.MessageOfTheDay.Controllers
 {
@@ -79,7 +82,9 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
             return RedirectToDefaultRoute();
         }
 
-        [ModuleAction(ControlKey = "Edit", TitleKey = "AddMessage")]
+        //[ModuleAction(ControlKey = "Edit", TitleKey = "AddMessage")]
+        [HttpGet]
+        [ModuleActionItems]
         public ActionResult Index()
         {
             //var messages = MessageManager.Instance.GetMessages(ModuleContext.ModuleId);
@@ -87,5 +92,50 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
             var message = MessageManager.Instance.GetDailyMessage(ModuleContext.ModuleId);
             return View(message);
         }
+
+        [HttpGet]
+        public ActionResult AdminList()
+        {
+            var messages = MessageManager.Instance.GetMessages(ModuleContext.ModuleId);
+            return View(messages);
+        }
+
+        public ModuleActionCollection GetIndexActions()
+        {
+            var actions = new ModuleActionCollection
+            {
+
+                new ModuleAction(-1)
+                {
+                    CommandName = ModuleActionType.AddContent,
+                    CommandArgument = String.Empty,
+                    Icon = String.Empty,
+                    Title = LocalizeString("AddMessage"),
+                    Url = ModuleContext.EditUrl("Edit"),
+                    Secure = SecurityAccessLevel.Edit,
+                    UseActionEvent = false,
+                    Visible = true,
+                    NewWindow = false
+                },
+                new ModuleAction(-1)
+                {
+                    CommandName = ModuleActionType.ContentOptions,
+                    CommandArgument = String.Empty,
+                    Icon = String.Empty,
+                    Title = LocalizeString("AdminList"),
+                    Url = ModuleContext.EditUrl("AdminList"),
+                    Secure = SecurityAccessLevel.Edit,
+                    UseActionEvent = false,
+                    Visible = true,
+                    NewWindow = false
+                }
+            };
+
+
+            return actions;
+        }
+
+
     }
 }
+

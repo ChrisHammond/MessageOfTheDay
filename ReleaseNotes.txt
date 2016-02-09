@@ -8,6 +8,37 @@
 <div class="License">
 	<h3>About the Message Of The Day Module</h3>
 	<p class="Owner">
+		<b>Version V00.00.02</b><br /><br />
+	</p>
+	<p>The initial Release of the Message of the Day Module allows you to create messages and have those messages randomly loaded on the page. 
+	Check out the Future Features for a better idea of what is coming in the next couple of weeks.</p>
+	
+
+	<h4>Requirements</h4>
+	<ul>
+			<li>DNN 8 +</li>
+			<li>A Bootstrap V3.3+ skin (we recommend the Free open source HammerFlex skin <a href="http://cjh.am/hammerflex">http://cjh.am/hammerflex</a></li>
+	</ul>
+
+
+	<h4>New Features</h4>
+	<ul>
+			<li>Ability to Create/Edit/Delete Message of the Day messages</li>
+			<li>If Nothing scheduled, display random message on page/module load</li>
+			<li>Uses bootstrap</li>
+			<li>WYSWIG editor<li>
+			<li>Ability to Schedule MOTD</li>
+	</ul>
+
+
+	<h4>Bug Fixes</h4>
+	<ul>
+			<li>TBD</li>
+	</ul>	
+
+
+
+	<p class="Owner">
 		<b>Version V00.00.01</b><br /><br />
 	</p>
 	<p>The initial Release of the Message of the Day Module allows you to create messages and have those messages randomly loaded on the page. 

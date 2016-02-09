@@ -91,3 +91,8 @@
     background-color: transparent;
     font-size:18px;
 }
+
+
+
+/* Admin List view */
+messageTable TR TD { padding: 5px !important;}

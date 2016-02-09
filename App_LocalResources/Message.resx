@@ -192,4 +192,7 @@
   <data name="Details.Text" xml:space="preserve">
     <value>Details</value>
   </data>
+  <data name="AdminList.Text" xml:space="preserve">
+    <value>List of Messages</value>
+  </data>
 </root>
