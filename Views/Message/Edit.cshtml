@@ -1,6 +1,5 @@
-﻿@model Christoc.Modules.MessageOfTheDay.Models.Message
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Christoc.Modules.MessageOfTheDay.Models.Message>
 
-@using DotNetNuke.Web.Mvc.Helpers
 
 <!--We really shouldn't do this (force load bootstrap), but if the skin doesn't have BootStrap loaded we're going to do it anyways. Most POPUP skins won't do this already. -->
 
@@ -34,7 +33,11 @@
     videoUrlPlaceholder = @Dnn.LocalizeString("lblVideoUrl.Help");
     messageDisplayDatePlaceHolder = @Dnn.LocalizeString("lblDisplayDate.Help");
     imageUrlPlaceholder = @Dnn.LocalizeString("lblImageUrl.Help");
+
+
 }
+
+
 
 <div id="Message-@Dnn.ModuleContext.ModuleId">
     <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
