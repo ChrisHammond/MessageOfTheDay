@@ -195,4 +195,7 @@
   <data name="AdminList.Text" xml:space="preserve">
     <value>List of Messages</value>
   </data>
+  <data name="ViewDescription.Text" xml:space="preserve">
+    <value>View Description</value>
+  </data>
 </root>

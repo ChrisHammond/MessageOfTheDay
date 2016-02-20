@@ -1,0 +1,9 @@
+﻿
+
+ALTER TABLE {databaseOwner}{objectQualifier}motd_messages ALTER COLUMN MessageVideoUrl nvarchar(255) NULL
+
+ALTER TABLE {databaseOwner}{objectQualifier}motd_messages ALTER COLUMN MessageUrl nvarchar(255) NULL
+
+ALTER TABLE {databaseOwner}{objectQualifier}motd_messages ALTER COLUMN MessageImageUrl nvarchar(255) NULL
+
+

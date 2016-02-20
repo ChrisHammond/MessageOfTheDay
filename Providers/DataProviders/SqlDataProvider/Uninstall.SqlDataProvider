@@ -1,3 +1,8 @@
 ﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}MOTD_Messages]') AND type in (N'U'))
 DROP TABLE {databaseOwner}[{objectQualifier}MOTD_Messages]
 GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}MOTD_Logs]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}MOTD_Logs]
+GO

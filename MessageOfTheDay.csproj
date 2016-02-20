@@ -152,6 +152,7 @@
     <Content Include="LICENSE" />
     <Content Include="README.MD" />
     <Content Include="Views\Message\AdminList.cshtml" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.02.SqlDataProvider" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
