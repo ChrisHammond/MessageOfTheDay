@@ -57,11 +57,8 @@ namespace Christoc.Modules.MessageOfTheDay.Components
 
         public void DeleteLog(Log t)
         {
-            using (IDataContext ctx = DataContext.Instance())
-            {
-                var rep = ctx.GetRepository<Log>();
-                rep.Delete(t);
-            }
+            t.DeletedDate = DateTime.UtcNow;
+            UpdateLog(t);
         }
 
         public IEnumerable<Log> GetLogs(int moduleId)
@@ -92,7 +89,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             Log t;
             using (IDataContext ctx = DataContext.Instance())
             {
-                t = ctx.ExecuteSingleOrDefault<Log>(CommandType.Text, "SELECT top 1 * FROM MOTD_Logs Where moduleid=" + moduleId + " and LogDate = '" + theDate.ToShortDateString() + "'");
+                t = ctx.ExecuteSingleOrDefault<Log>(CommandType.Text, "SELECT top 1 * FROM MOTD_Logs Where moduleid=" + moduleId + " and LogDate = '" + theDate.ToShortDateString() + "' and DeletedDate is Null");
             }
             return t;
         }

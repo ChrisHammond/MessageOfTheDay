@@ -198,4 +198,7 @@
   <data name="ViewDescription.Text" xml:space="preserve">
     <value>View Description</value>
   </data>
+  <data name="ResetDailyMessage.Text" xml:space="preserve">
+    <value>Reset Daily Message</value>
+  </data>
 </root>

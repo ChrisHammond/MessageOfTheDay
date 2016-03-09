@@ -143,11 +143,8 @@ namespace Christoc.Modules.MessageOfTheDay.Components
                 LogManager.Instance.CreateLog(newLog);
                 return ranMes;
             }
-
             return new Message();
-
         }
-
 
         public Message GetMessageByDate(DateTime d, int moduleId)
         {
@@ -155,7 +152,7 @@ namespace Christoc.Modules.MessageOfTheDay.Components
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Message>();
-                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages WHERE moduleid=" + moduleId + " and MessageDisplayDate = '" + d.ToShortDateString() + "'");
+                t = ctx.ExecuteSingleOrDefault<Message>(CommandType.Text, "SELECT top 1 * FROM MOTD_Messages WHERE moduleid=" + moduleId + " and MessageDisplayDate = '" + d.ToShortDateString() + "'" );
 
             }
             return t;

@@ -28,6 +28,7 @@
 			<li>Uses bootstrap</li>
 			<li>WYSWIG editor<li>
 			<li>Ability to Schedule MOTD</li>
+			<li>Ability to "Reset" the current MOTD</li>
 	</ul>
 
 

@@ -21,6 +21,7 @@ using System.Web.Mvc;
 using Christoc.Modules.MessageOfTheDay.Components;
 using Christoc.Modules.MessageOfTheDay.Models;
 using DotNetNuke.Entities.Modules.Actions;
+using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Web.Mvc.Framework.Controllers;
 using DotNetNuke.Web.Mvc.Framework.ActionFilters;
 using DotNetNuke.Entities.Users;
@@ -100,11 +101,20 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
             return View(messages);
         }
 
+        [HttpGet]
+        public ActionResult ResetDailyMessage()
+        {
+            var log = LogManager.Instance.GetDailyLog(DateTime.Now, ModuleContext.ModuleId);
+            LogManager.Instance.DeleteLog(log);
+            //redirect
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
+            return null;
+        }
+
         public ModuleActionCollection GetIndexActions()
         {
             var actions = new ModuleActionCollection
             {
-
                 new ModuleAction(-1)
                 {
                     CommandName = ModuleActionType.AddContent,
@@ -128,9 +138,21 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
                     UseActionEvent = false,
                     Visible = true,
                     NewWindow = false
+                },
+                new ModuleAction(-1)
+                {
+                    CommandName = ModuleActionType.ContentOptions,
+                    CommandArgument = String.Empty,
+                    Icon = String.Empty,
+                    Title = LocalizeString("ResetDailyMessage"),
+                    Url = ModuleContext.EditUrl("ResetDailyMessage"),
+                    //Url = DotNetNuke.Common.Globals.NavigateURL(ModuleContext.TabId,string.Empty,"removeLog=true"),//ModuleContext.EditUrl("ResetDailyMessage"),
+                    Secure = SecurityAccessLevel.Edit,
+                    UseActionEvent = false,
+                    Visible = true,
+                    NewWindow = false
                 }
             };
-
 
             return actions;
         }

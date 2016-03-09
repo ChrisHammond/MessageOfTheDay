@@ -6,4 +6,6 @@ ALTER TABLE {databaseOwner}{objectQualifier}motd_messages ALTER COLUMN MessageUr
 
 ALTER TABLE {databaseOwner}{objectQualifier}motd_messages ALTER COLUMN MessageImageUrl nvarchar(255) NULL
 
+ALTER TABLE dbo.MOTD_Logs ADD DeletedDate datetime NULL
 
+GO

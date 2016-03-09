@@ -33,7 +33,7 @@ namespace Christoc.Modules.MessageOfTheDay.Models
     public class Log
     {
         ///<summary>
-        /// The ID of your message with the name of the MessageTitle
+        /// The ID of the log
         ///</summary>
         public int LogId { get; set; } = -1;
 
@@ -44,7 +44,7 @@ namespace Christoc.Modules.MessageOfTheDay.Models
         public DateTime LogDate { get; set; }
 
         ///<summary>
-        /// The ModuleId of where the Message was created and gets displayed
+        /// The ModuleId of where the Log was created and gets displayed
         ///</summary>
         public int ModuleId { get; set; }
 
@@ -64,14 +64,19 @@ namespace Christoc.Modules.MessageOfTheDay.Models
         //public int LastModifiedByUserId { get; set; } = -1;
 
         ///<summary>
-        /// The date the Message was created
+        /// The date the Log was created
         ///</summary>
         public DateTime CreatedOnDate { get; set; } = DateTime.UtcNow;
 
         ///<summary>
-        /// The date the Message was updated
+        /// The date the Log was updated
         ///</summary>
         public DateTime LastModifiedOnDate { get; set; } = DateTime.UtcNow;
+
+        ///<summary>
+        /// The date the LogWasDeleted
+        ///</summary>
+        public DateTime? DeletedDate { get; set; }
 
 
 
