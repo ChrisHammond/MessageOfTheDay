@@ -27,7 +27,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}MOTD_Messages
     LastModifiedByUserId int NOT NULL,
 	MessageDisplayDate datetime NULL
     )  ON [PRIMARY]
-     TEXTIMAGE_ON [PRIMARY]
+/*     TEXTIMAGE_ON [PRIMARY] */
 GO
 
 
@@ -56,7 +56,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}MOTD_Logs
     LastModifiedOnDate datetime NOT NULL--,
 /*  LastModifiedByUserId int NOT NULL */
     )  ON [PRIMARY]
-     TEXTIMAGE_ON [PRIMARY]
+/*     TEXTIMAGE_ON [PRIMARY] */
 GO
 
 

@@ -86,7 +86,7 @@ namespace Christoc.Modules.MessageOfTheDay.Controllers
         //[ModuleAction(ControlKey = "Edit", TitleKey = "AddMessage")]
         [HttpGet]
         [ModuleActionItems]
-        public ActionResult Index()
+        public ActionResult Index() 
         {
             //var messages = MessageManager.Instance.GetMessages(ModuleContext.ModuleId);
 

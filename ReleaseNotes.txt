@@ -2,16 +2,34 @@
 <p class="Contributor">
 	Christoc.com <br />
 	<a href="mailto:modules@christoc.com">modules@christoc.com</a><br />
-	<a href=http://www.christoc.com>http://www.christoc.com</a><br />
+	<a href=https://www.christoc.com>https://www.christoc.com</a><br />
 </p>
 <hr/>
 <div class="License">
 	<h3>About the Message Of The Day Module</h3>
+
+	<p class="Owner">
+		<b>Version V00.00.03</b><br /><br />
+	</p>
+	<p>Updated the source/module to work with DNN 9.</p>
+	
+
+	<h4>Requirements</h4>
+	<ul>
+			<li>DNN 9 +</li>
+			<li>A Bootstrap V3.3+ skin (we recommend the Free open source HammerFlex2 skin <a href="http://cjh.am/hammerflex2">http://cjh.am/hammerflex2</a></li>
+	</ul>
+
+
+	<h4>New Features</h4>
+	<ul>
+			<li>No new featured added this release</li>
+	</ul>
+
 	<p class="Owner">
 		<b>Version V00.00.02</b><br /><br />
 	</p>
-	<p>The initial Release of the Message of the Day Module allows you to create messages and have those messages randomly loaded on the page. 
-	Check out the Future Features for a better idea of what is coming in the next couple of weeks.</p>
+	<p></p>
 	
 
 	<h4>Requirements</h4>

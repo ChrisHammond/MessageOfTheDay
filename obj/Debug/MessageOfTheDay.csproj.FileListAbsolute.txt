@@ -3,4 +3,6 @@ c:\websites\dnndev.me\bin\MessageOfTheDay.dll
 c:\websites\dnndev.me\bin\MessageOfTheDay.pdb
 c:\websites\dnndev.me\desktopmodules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.dll
 c:\websites\dnndev.me\desktopmodules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.pdb
-c:\websites\dnndev.me\desktopmodules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.csprojResolveAssemblyReference.cache
+C:\Websites\dnndev.me\DesktopModules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.csproj.AssemblyReference.cache
+C:\Websites\dnndev.me\DesktopModules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.csproj.CoreCompileInputs.cache
+C:\Websites\dnndev.me\DesktopModules\MVC\MessageOfTheDay\obj\Debug\MessageOfTheDay.csproj.CopyComplete
